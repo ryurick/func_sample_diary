@@ -1,0 +1,24 @@
+{% extends 'diary/base.html' %} {% block content %}
+<!-- 基本的に入力フォームを作成する際はformタグ、buttontype="submit"必須。actionには送信先のurlを記述するが、djangoでは基本的に空(同じページに対して送信) -->
+<form action="" method="POST">
+  <table class="table">
+    <tr>
+      <th>タイトル</th>
+      <td>{{day.title}}</td>
+    </tr>
+    <tr>
+      <th>本文</th>
+      <td>{{day.text}}</td>
+    </tr>
+    <tr>
+      <th>日付</th>
+      <td>{{day.date}}</td>
+    </tr>
+  </table>
+  <p>こちらのデータを削除します</p>
+  <!--{{form.as_p}-->>
+  <button type="submit">送信</button>
+  <!-- POSTでのデータ送信は必ずcsrf_tokenを書く(クロスサイトリクエストフォージェリ対策) -->
+  {% csrf_token %}
+</form>
+{% endblock %}

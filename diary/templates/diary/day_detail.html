@@ -1,0 +1,19 @@
+{% extends 'diary/base.html' %} {% block content %}
+<!-- 基本的に入力フォームを作成する際はformタグ、buttontype="submit"必須。actionには送信先のurlを記述するが、djangoでは基本的に空(同じページに対して送信) -->
+
+<table class="table">
+  <tr>
+    <th>タイトル</th>
+    <td>{{day.title}}</td>
+  </tr>
+  <tr>
+    <th>本文</th>
+    <!-- linevreaksbrでブランクを改行コードに変更してくれる。（djangoの標準機能） -->
+    <td>{{day.text | linebreaksbr }}</td>
+  </tr>
+  <tr>
+    <th>日付</th>
+    <td>{{day.date}}</td>
+  </tr>
+</table>
+{% endblock %}
